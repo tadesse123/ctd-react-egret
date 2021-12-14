@@ -2,7 +2,6 @@ import React from 'react';
 import AddTodoForm from './AddTodoForm';
 import TodoList from './TodoList';
 import PropTypes from 'prop-types';
-import { textAlign } from '@mui/system';
 function TodoContainer({ tableName }) {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true)
@@ -17,6 +16,15 @@ function TodoContainer({ tableName }) {
     )
       .then((resp) => resp.json())
       .then((data) => {
+        data.records.sort((objectA, objectB)=>{
+          if (objectA.fields.Title < objectB.fields.Title){
+            return -1
+          }else if (objectA.fields.Title === objectB.fields.Title){
+            return 0
+          }else {
+            return 1
+          }
+        })
         setTodoList(data.records)
         setIsLoading(false)
       })
