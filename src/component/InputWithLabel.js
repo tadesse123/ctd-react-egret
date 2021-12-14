@@ -1,13 +1,18 @@
 
 import React, { useEffect, useRef } from "react";
 import  './InputWithLabel.css';
-
+import PropTypes from 'prop-types';
 const InputWithLabel = ({ todoTitle, handleTitleChange, children }) => {
   const inputRef = useRef();
   
   useEffect(() => {
     inputRef.current.focus();
   });
+  InputWithLabel.propTypes = {
+    children: PropTypes.string,
+    todoTitle: PropTypes.string,
+    handleTitleChange: PropTypes.func
+  }
 
   return (
     <>

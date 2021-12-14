@@ -1,7 +1,8 @@
 import React from 'react';
 import AddTodoForm from './AddTodoForm';
 import TodoList from './TodoList';
-
+import PropTypes from 'prop-types';
+import { textAlign } from '@mui/system';
 function TodoContainer({ tableName }) {
   const [todoList, setTodoList] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true)
@@ -62,10 +63,25 @@ function TodoContainer({ tableName }) {
         setTodoList(todoList.filter((item) => item.id !== data.records[0].id))
       })
   }
+  TodoContainer.propTypes = {
+    tableName: PropTypes.string
+  }
+  const mystyle = {
+    color: "white",
+    backgroundColor: "DodgerBlue",
+    padding: "10px",
+    fontFamily: "Arial",
+    textAlign: "center",
+    width: "500px",
+    margin: "auto"
 
+
+
+  }
   return (
+
     <>
-      <h1 >{tableName}</h1>
+      <h1 style={mystyle} >{tableName}</h1>
       <AddTodoForm onAddTodo={addTodo} />
       {(isLoading) ? (<p>Loading...</p>) : (<TodoList todoList={todoList} onRemoveTodo={removeTodo} />)}
     </>
