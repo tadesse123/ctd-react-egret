@@ -26,7 +26,7 @@ function TodoListItem({ todo, onRemoveTodo }) {
           {todo.fields.Title}
         </label>
         <button className={styles.removeButton} type="button" onClick={() => onRemoveTodo(todo.id)}>
-          <AiFillDelete size={20} style={{ fill: 'brown' }} />
+          <AiFillDelete size={20} style={{ fill: 'red' }} />
         </button>
       </li>
     </div>
