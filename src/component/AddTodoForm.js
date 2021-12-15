@@ -15,6 +15,7 @@ function AddTodoForm({ onAddTodo }) {
         if (todoTitle === "") {
             return false;
         }
+        onAddTodo(todoTitle);
         setTodoTitle("");
     };
     AddTodoForm.propTypes = {
